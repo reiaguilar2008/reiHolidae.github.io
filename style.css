@@ -22,19 +22,19 @@ header{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:35px;
-    padding:6px 0;
+    gap:25px;
+    padding:4px 0;
     transition:0.4s;
     max-height:80px;
     overflow:hidden;
 }
 .top-header img{
-    width:60px;
+    width:30px;
 }
 .top-header a{
     color:white;
     text-decoration:none;
-    font-size:30px;
+    font-size:20px;
 }
 
 /*hide when scrolling*/
@@ -54,7 +54,7 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:5px 40px;
+    padding:4px 45px;
 }
 /*white line*/
 .main-header::before{
@@ -69,7 +69,8 @@ header{
 
 
 .logo{
-    width:200px;
+    width:120px;
+    align-items:center;
 }
 
 .left-icons,.right-icons{
@@ -82,12 +83,12 @@ button{
     background:none;
     border:none;
     color:white;
-    font-size:45px;
+    font-size:28px;
     cursor:pointer;
 }
 
 .right-icons span{
-    font-size:35px;
+    font-size:22px;
 }
 
 /*screen thing*/
