@@ -1,4 +1,3 @@
-
 body{
     margin:0;
     padding:0;
@@ -29,7 +28,7 @@ header{
     overflow:hidden;
 }
 .top-header img{
-    width:30px;
+    width:35px;
 }
 .top-header a{
     color:white;
@@ -54,7 +53,8 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:4px 45px;
+    padding:2px 35px;
+    position:relative;
 }
 /*white line*/
 .main-header::before{
@@ -67,10 +67,18 @@ header{
     background-color:white;
 }
 
-
+.main-header img{
+    max-height:45px;
+}
+/*tryna force this damn logo to center*/
 .logo{
     width:120px;
-    align-items:center;
+    max-height:55px;
+    object-fit:contain;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-52%,-50%);/*my drawing is a bit right heavy*/
 }
 
 .left-icons,.right-icons{
@@ -88,7 +96,7 @@ button{
 }
 
 .right-icons span{
-    font-size:22px;
+    font-size:16px;
 }
 
 /*screen thing*/
