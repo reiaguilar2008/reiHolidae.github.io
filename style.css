@@ -1,0 +1,292 @@
+
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    font-family:Arial,sans-serif;
+}
+
+/*whole header*/
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/*top part*/
+.top-header{
+    position:relative;
+    transition: all 0.4 ease;
+    background-color:#2f3f63;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    padding:6px 0;
+    transition:0.4s;
+    max-height:80px;
+    overflow:hidden;
+}
+.top-header img{
+    width:60px;
+}
+.top-header a{
+    color:white;
+    text-decoration:none;
+    font-size:30px;
+}
+
+/*hide when scrolling*/
+.top-header.hide{
+    max-height:0;
+    padding-top:0;
+    padding-bottom:0;
+    opacity:0;
+    overflow:hidden;
+}
+
+/*bottom sticky part*/
+.main-header{
+    background-color:#2f3f63;
+    position:relative;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 40px;
+}
+/*white line*/
+.main-header::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:10%;
+    width:80%;
+    height:3px;
+    background-color:white;
+}
+
+
+.logo{
+    width:200px;
+}
+
+.left-icons,.right-icons{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:45px;
+    cursor:pointer;
+}
+
+.right-icons span{
+    font-size:35px;
+}
+
+/*screen thing*/
+.hero{
+    height:calc(100vh - 120px);
+    background-image:url("beach.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    animation:heroSlideshow 30s infinite;
+}
+
+.hero-overlay{
+    background-color:rgba(0,0,0,0.45);
+    color:white;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding-left:80px;
+}
+
+.hero-overlay h1{
+    font-size:60px;
+    max-width:650px;
+    margin:0 0 20px 0;
+}
+
+.hero-overlay p{
+    font-size:40px;
+    max-width:600px;
+}
+
+
+/*screen thing slideshow*/
+@keyframes heroSlideshow{
+    0%{
+        background-image:url("boat.jpg");
+    }
+    12%{
+        background-image:url("cabin.avif");
+    }
+    24%{
+        background-image:url("rocks.jpg");
+    }
+    36%{
+        background-image:url("beach.avif");
+    }
+    48%{
+        background-image:url("blue.webp");
+    }
+    60%{
+        background-image:url("bg.jpeg");
+    }
+    80%{
+        background-image:url("cold.jpg");
+    }
+    100%{
+        background-image:url("boat.jpg");
+    }
+}
+/*fix phone*/
+@media(max-width: 768px){
+  .top-header{
+    gap:12px;
+    padding:5px 0;
+  }
+  .top-header img{
+    width:22px;
+  }
+  .top-header a{
+    font-size:14px;
+  }
+  .main-header{
+    padding:6px 12px;
+  }
+  .logo{
+    width:80px;
+  }
+  button img{
+    width:28px;
+  }
+  button{
+    font-size:26px;
+  }
+  .right-icons span{
+    font-size:14px;
+  }
+  .left-icons,.right-icons{
+    gap:8px;
+  }
+  .hero{
+    height:calc(100vh - 100px);
+  }
+  .hero-overlay h1{
+    font-size:28px;
+  }
+  .hero-overlay p{
+    font-size:14px;
+  }
+}
+
+/*OMG PLEASE FUCKING WORK*/
+html{
+    margin:0;
+    padding:0;
+}
+/*didnt work im gonna cry*/
+
+/*About section the h*/
+.about{
+    background-color:white;
+    padding:100px 60px;
+}
+
+.about-h{
+    text-align:center;
+    font-size:55px;
+    color:#2f3f63;
+    margin-bottom:60px;
+}
+/*about everything else*/
+.about-stuff{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+    max-width:1100px;
+    margin:auto;
+}
+/*about, look for synonym for words*/
+.about-words{
+    width:50%;
+}
+
+.about-words h3{
+    font-size:40px;
+    color:#2f3f63;
+}
+
+.about-words p{
+    font-size:25px;
+    line-height:1.6;
+}
+/*about pictures*/
+.about-images{
+    width:50%;
+    display:flex;
+    gap:20px;
+}
+
+.about-images img{
+    width:50%;
+    height:300px;
+    object-fit:cover;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+/*scroll pop up animation*/
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/*about phone fix*/
+.about{
+    padding:60px 20px;
+}
+
+.about-title{
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.about-content{
+    flex-direction:column;
+    gap:30px;
+}
+
+.about-text,.about-images{
+    width:100%;
+}
+
+.about-images img{
+    height:220px;
+}
+
+/*about image hover thing*/
+.about-images img{
+    transition:transform 0.3s ease;
+}
+.about-images img:hover{
+    transform:scale(1.08);
+}
