@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holidae</title>
     <link rel="stylesheet" href="style.css">
+    <!--3d model viewer thing-->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
     <header>
@@ -38,22 +40,42 @@
 </section>
 <script src="fold.js"></script>
 <!--About section-->
-    <section class="about">
-        <!--about header-->
-        <h2 class="about-h reveal">About Us</h2>
-        <div class="about-stuff">
-            <!--about paragraphs, think of what to put later-->
-            <div class="about-words reveal">
-                <h3>Travel Planning Made Simple</h3>
-                <p>bla bla bla something something, travel planning like shopping</p>
-                <p>idk what to put here i need to sleep</p>
-            </div>
-            <!--about images, add own drawings and videos later-->
-            <div class="about-images reveal">
-                <img src="about1.avif" alt="train">
-                <img src="about2.avif" alt="cartoon map">
-            </div>
+<section class="about about-fadein">
+    <div class="about-top">
+        <h2>About Us</h2>
+        <img src="about-logoblue.jpeg" alt="Holidae travel logo" class="about-logoblue">
+    </div>
+    <div class="about-main">
+        <div class="video-box slidein">
+            Video
         </div>
-    </section>
+        <div class="about-strip-text slidein">
+            <p>Words idk</p>
+        </div>
+    </div>
+    <div class="about-blocks">
+        <div class="info-left">
+            Info
+        </div>
+        <div class="info-right">
+            Other info
+        </div>
+    </div>
+    <div class="about-animation">
+        Animation
+    </div>
+    <div class="about-bottom">
+       <p class="about-bottom-words">More words idk</p>
+    </div>
+</section>
+<!--THE WORLD-->
+<section class="globe-section">
+    <h2>Options from all around The World</h2>
+    <div class="earth-bg">
+        <model-viewer src="THE WORLD.glb" auto-rotate camera-controls class="THE-WORLD" 
+        border:none disable-zoom disable-pan auto-rotate-delay="0">
+        </model-viewer>
+    </div>
+</section>
 </body>
 </html>

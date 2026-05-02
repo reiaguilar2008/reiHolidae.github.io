@@ -15,8 +15,8 @@ header{
 /*top part*/
 .top-header{
     position:relative;
-    transition: all 0.4 ease;
-    background-color:#2f3f63;
+    transition: all 0.4s ease;
+    background-color:#172b7d;
     color:white;
     display:flex;
     justify-content:center;
@@ -47,7 +47,7 @@ header{
 
 /*bottom sticky part*/
 .main-header{
-    background-color:#2f3f63;
+    background-color:#172b7d;
     position:relative;
     color:white;
     display:flex;
@@ -63,7 +63,7 @@ header{
     top:0;
     left:10%;
     width:80%;
-    height:3px;
+    height:2px;
     background-color:white;
 }
 
@@ -106,7 +106,7 @@ button{
     background-size:cover;
     background-position:center;
     position:relative;
-    animation:heroSlideshow 30s infinite;
+    animation:heroSlideshow 25s infinite;
 }
 
 .hero-overlay{
@@ -117,7 +117,7 @@ button{
     flex-direction:column;
     justify-content:center;
     align-items:flex-start;
-    padding-left:80px;
+    padding-left:75px;
 }
 
 .hero-overlay h1{
@@ -200,102 +200,277 @@ button{
   }
 }
 
-/*OMG PLEASE FUCKING WORK*/
+/*OMG PLEASE FUCKING WORK*/ 
 html{
     margin:0;
     padding:0;
 }
-/*didnt work im gonna cry*/
+/*didnt work im gonna cry*/ /*white line is gone now, idk if it was this but im not touching it*/
+/*checked on the iphone se ver, still doesn't reach the edge, damn it*/
 
-/*About section the h*/
+/*about section*/
 .about{
-    background-color:white;
-    padding:100px 60px;
+    background-color:#bddbff;
+    color:#101541;
+    margin-top:100px; 
 }
 
-.about-h{
-    text-align:center;
-    font-size:55px;
-    color:#2f3f63;
-    margin-bottom:60px;
+/*top part*/
+.about-top{
+    text-align: center;
+    padding: 70px 20px 60px;
 }
-/*about everything else*/
-.about-stuff{
+.about-top h2{
+    font-size:45px;
+    margin:0;
+    color:#101541;
+}
+.about-logoblue{
+    width:260px;
+    margin-top:15px;
+}
+
+/*strip(strip or stripe?) and video*/
+.about-main{
+    background-color:#578ae8;
+    height:200px;
+    display:flex;
+    align-items:center; 
+    justify-content:flex-start;
+    gap:80px;
+    padding-left:120px;
+    color:white;
+    overflow:visible;
+    z-index:3;
+    margin-bottom:50px;
+}
+.video-box{
+    width:350px;
+    height:300px;
+    background-color:white;
+    border-radius:10px;
+    color:#101541;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:60px;
-    max-width:1100px;
-    margin:auto;
+    font-size:55px;
+    position:relative;
+    z-index:10;
 }
-/*about, look for synonym for words*/
-.about-words{
-    width:50%;
-}
-
-.about-words h3{
-    font-size:40px;
-    color:#2f3f63;
+.about-strip-text p{
+    color:white;
+    font-size:28px;
+    margin:0;
 }
 
-.about-words p{
-    font-size:25px;
-    line-height:1.6;
-}
-/*about pictures*/
-.about-images{
-    width:50%;
+/*about coloured boxes*/
+.about-blocks{
+    background-color:#bddbff;
     display:flex;
-    gap:20px;
+    width:100%;
+    padding:30px 0 0 0;
+    position:relative;
+    z-index:1;
+}
+.info-left,.info-right{
+    height:450px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:42px;
+    padding-top:50px;
+}
+.info-left{
+    background-color:#578ae8;
+    width:60%;
+}
+.info-right{
+    background-color:#07008f;
+    width:40%;
 }
 
-.about-images img{
-    width:50%;
-    height:300px;
-    object-fit:cover;
-    border-radius:20px;
-    overflow:hidden;
+/*about animation*/
+.about-animation{
+    background-color:white;
+    min-height:330px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:48px;
+    color:#101541;
 }
 
-/*scroll pop up animation*/
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:all 0.8s ease;
+/*about bottom/last part*/
+.about-bottom{
+    background-color:#07008f;
+    min-height:350px;
+    padding-top:0;
+    padding-bottom:20px;
 }
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
+.about-bottom-words{
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    display:flex;
+    color:white;
 }
 
 /*about phone fix*/
-.about{
-    padding:60px 20px;
+@media(max-width:768px){
+  /*stack straight and the strip/stripe thing*/
+  .about-main{
+    flex-direction:column;
+    height:auto;
+    padding:40px 20px;
+    gap:20px;
+    align-items:center;
+    position:relative;
+    height:120px;
+    margin-top:60px;
+  }
+  .about-main p{
+    text-align:center;
+  }
+
+  /*video box, to small to be on the side so i made it look half on top instead*/
+  /*litlle more than half, it looks better imo*/
+  .video-box{
+    width:200px;
+    height:200px;
+    font-size:30px;
+    position:absolute;
+    top:50%;
+    left:50%;
+  }
+  .about-strip-text{
+    width:100%;
+    text-align:center;
+    margin-top:50px;
+    position:relative;
+    z-index:5;
+  }
+  /*mobile ver of the slide in*/
+  .video-box.slidein{
+    opacity:0;
+    transform:translate(-50%,-110%)translateY(-60px) !important;
+  }
+  .video-box.slidein.active{
+    opacity:1;
+    transform:translate(-50%,-110%)translateY(0) !important;
+  }
+  .about-strip-text.slidein{
+    opacity:0;
+    transform:translateY(-60px);
+  }
+  .about-strip-text.slidein.active{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /*stack info blocks, theyre too small on phone to be side by side*/
+  .about-blocks{
+    flex-direction:column;
+  }
+  .info-left,.info-right{
+    width:100%;
+    height:250px;
+    font-size:28px;
+  }
+
+  /*animation part*/
+  .about-animation{
+    min-height:200px;
+  }
 }
 
-.about-title{
-    font-size:38px;
+/*about section fade in*/
+.about-fadein{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.about-fadein.active{
+    opacity:1;
+    transform:translate(0);
+}
+/*hide this for a bit*/
+.about-animation,.about-bottom-words{
+    opacity:0;
+}
+
+/*video and strip text slide in*/
+.slidein{
+    opacity:0;
+    transform:translateX(-60px);
+    transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.slidein.active{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/*THE WORLDDDD section*/
+.globe-section{
+    min-height:100vh;
+    background-color:white;
+    color:#101541;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding-top:30px;
+    box-sizing:border-box;
+}
+.globe-section h2{
+    font-size:35px;
+    margin:0 0 60px;
+    text-align:center;
     margin-bottom:30px;
 }
-
-.about-content{
-    flex-direction:column;
-    gap:30px;
-}
-
-.about-text,.about-images{
+/*THE EARTH*/
+.THE-WORLD{
     width:100%;
-}
-
-.about-images img{
-    height:220px;
-}
-
-/*about image hover thing*/
-.about-images img{
+    height:100%;
+    position:relative;
+    z-index:1;
+    background:transparent;
+    border-radius:50%;
+    /*hover bigger thing*/
     transition:transform 0.3s ease;
 }
-.about-images img:hover{
+.THE-WORLD:hover{
     transform:scale(1.08);
+}
+/*fake background*/
+.earth-bg{
+    position:relative;
+    width:500px;
+    height:500px;
+    margin:0 auto;
+    border-radius:50%;
+    overflow:hidden;
+    background:#bddbff;
+}
+
+/*world section phone*/
+@media(max-width:768px){
+    .globe-section h2{
+        font-size:30px;
+        padding:0 20px;
+    }
+
+    /*earth model phone*/
+    .THE-WORLD{
+        width:100%;
+        height:100%;
+    }
+    /*earth model hover bigger thing mobile ver*/
+    .THE-WORLD:hover{
+        transform:scale(1.06);
+    }
+    .earth-bg{
+        width:300px;
+        height:300px;
+    }
 }
