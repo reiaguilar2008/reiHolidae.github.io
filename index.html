@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holidae</title>
     <link rel="stylesheet" href="style.css">
-    <!--3d model viewer thing-->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+ 
 </head>
 <body>
     <header>
@@ -45,12 +44,17 @@
         <h2>About Us</h2>
         <img src="about-logoblue.jpeg" alt="Holidae travel logo" class="about-logoblue">
     </div>
+    <!--about section video and strip-->
     <div class="about-main">
         <div class="video-box slidein">
-            Video
+            <video class="about-video" controls>
+                <source src="video.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="about-strip-text slidein">
-            <p>Words idk</p>
+            <p>At Holidae, we are passionate about turning every person travel dream into reality. With over 8 years of experience, we specialize in curating personalized itineraries for leisure and group travelers. Our team of expert ensures every detail—from flights to accommodation—is handled with care, offering a 24/7 support to ensure a stress-free journey.
+We offer a bundled travel services combining flights, accommodation, a guided tour with transfer services into just one price. We also offer cruises and other family getaways. A trip to Dubai desert oasis and beach vacations at Maldives or a European luxury tour package.
+We turn trips into memories.  Your travel partner for life Holidae.</p>
         </div>
     </div>
     <div class="about-blocks">
@@ -71,11 +75,80 @@
 <!--THE WORLD-->
 <section class="globe-section">
     <h2>Options from all around The World</h2>
-    <div class="earth-bg">
-        <model-viewer src="THE WORLD.glb" auto-rotate camera-controls class="THE-WORLD" 
-        border:none disable-zoom disable-pan auto-rotate-delay="0">
-        </model-viewer>
+    <div id="THEWORLD">
+    </div>
+    <div id="countryCard" class="country-card">
+        <h3>Japan</h3>
+        <p>country info</p>
     </div>
 </section>
+<!--popular packages and a button to the page with all the packages-->
+<section class="popular-packages">
+    <h2>Popular Packages</h2>
+    <button class="package-button">View all packages</button>
+    <div class="packages-layout">
+        <div class="package-card">
+            <h3>Package 1</h3>
+            <!--dont have a picture yet i'll get one later-->
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>Package 2</h3>
+            <!--still no pictures-->
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>Package 3</h3>
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>Package 4</h3>
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>Package 5</h3>
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>Package 6</h3>
+            <img>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info</p>
+            </details>
+        </div>
+    </div>
+</section>
+<!--3d model thing i found on google please dont blow up my laptop-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module" src="THEWORLD.js"></script>
 </body>
 </html>
