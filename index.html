@@ -37,7 +37,6 @@
         <p>something something idk i'll replace it later it's 2am</p>
     </div>
 </section>
-<script src="fold.js"></script>
 <!--About section-->
 <section class="about about-fadein">
     <div class="about-top">
@@ -47,7 +46,7 @@
     <!--about section video and strip-->
     <div class="about-main">
         <div class="video-box slidein">
-            <video class="about-video" controls>
+            <video class="about-video" muted playsinline>
                 <source src="video.mp4" type="video/mp4">
             </video>
         </div>
@@ -66,7 +65,8 @@ We turn trips into memories.  Your travel partner for life Holidae.</p>
         </div>
     </div>
     <div class="about-animation">
-        Animation
+        <img src="plane.jpeg" class="plane-boop">
+        <img src="cartoon map.jpeg" class="map">
     </div>
     <div class="about-bottom">
        <p class="about-bottom-words">More words idk</p>
@@ -88,56 +88,93 @@ We turn trips into memories.  Your travel partner for life Holidae.</p>
     <button class="package-button">View all packages</button>
     <div class="packages-layout">
         <div class="package-card">
-            <h3>Package 1</h3>
-            <!--dont have a picture yet i'll get one later-->
-            <img>
+            <h3>Japan City Circuit</h3>
+            <video class="package-video" src="japan-video.mp4" type="video/mp4" muted loop playsinline></video>
+            <details>
+                <summary>extendable info</summary>
+                <p>full info aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaa aaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaa</p>
+                <a href="japan-package.html" class="package-button">
+                    View Package
+                </a>
+            </details>
+        </div>
+        <div class="package-card">
+            <h3>EU Tour</h3>
+            <video class="package-video" src="europe-tour.mp4" type="video/mp4" muted loop playsinline></video>
             <details>
                 <summary>extendable info</summary>
                 <p>full info</p>
             </details>
         </div>
         <div class="package-card">
-            <h3>Package 2</h3>
-            <!--still no pictures-->
-            <img>
+            <h3>UK Exploration</h3>
+            <video class="package-video" src="uk.mp4" type="video/mp4" muted loop playsinline></video>
             <details>
                 <summary>extendable info</summary>
                 <p>full info</p>
             </details>
         </div>
         <div class="package-card">
-            <h3>Package 3</h3>
-            <img>
+            <h3>Tropical Getaway</h3>
+            <video class="package-video" src="hawaii.mp4" type="video/mp4" muted loop playsinline></video>
             <details>
                 <summary>extendable info</summary>
                 <p>full info</p>
             </details>
         </div>
         <div class="package-card">
-            <h3>Package 4</h3>
-            <img>
+            <h3>European Winter</h3>
+            <video class="package-video" src="christmas.mp4" type="video/mp4" muted loop playsinline></video>
             <details>
                 <summary>extendable info</summary>
                 <p>full info</p>
             </details>
         </div>
         <div class="package-card">
-            <h3>Package 5</h3>
-            <img>
-            <details>
-                <summary>extendable info</summary>
-                <p>full info</p>
-            </details>
-        </div>
-        <div class="package-card">
-            <h3>Package 6</h3>
-            <img>
+            <h3>New York Urban Escape</h3>
+            <video class="package-video" src="new-york.mp4" type="video/mp4" muted loop playsinline></video>
             <details>
                 <summary>extendable info</summary>
                 <p>full info</p>
             </details>
         </div>
     </div>
+<!--footer section-->
+<footer class="site-footer">
+
+    <img src="footer-drawing.png" class="footer-art">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <p class="footer-small">Holidae</p>
+            <h2>Your Journey, Our Expertise</h2>
+        </div>
+
+        <div class="footer-credits">
+    <p class="credits-title">Photo and video credits</p>
+
+    <div class="credits-columns">
+        <div class="credit-types">
+            <p>Hero section photos</p>
+            <p>Popular Packages card videos</p>
+        </div>
+
+        <div class="credit-names">
+            <p>Free from Google</p>
+            <p>By Evgenij Mikhail from Pexels</p>
+            <p>By Jess Loiterton from Pexels</p>
+            <p>By Martyn Day from Pexels</p>
+            <p>By K from Pexels</p>
+            <p>By Stephen Leonard from Pexels</p>
+            <p>By Yousaf Abbasic from Pexels</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+</footer>
 </section>
 <!--3d model thing i found on google please dont blow up my laptop-->
 <script type="importmap">
@@ -148,7 +185,12 @@ We turn trips into memories.  Your travel partner for life Holidae.</p>
   }
 }
 </script>
-
 <script type="module" src="THEWORLD.js"></script>
+<!--js for the fake animation in the about section-->
+<script src="animation.js"></script>
+<!--script for the folding and sliding stuff-->
+<script src="fold.js"></script>
+<!--the js for everything in the popular packages section-->
+<script src="packages-posters.js"></script>
 </body>
 </html>

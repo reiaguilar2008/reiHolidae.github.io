@@ -19,6 +19,7 @@ function revealOnScroll(){
             reveals[i].classList.add("active");
         }else{
             reveals[i].classList.remove("active");
+            resetAnimation();
         }
     }
 }
@@ -27,13 +28,13 @@ revealOnScroll();
 
 //video and strip words slide in
 function slideStripOnScroll(){
-    let about = document.querySelector(".about");
-    let slideItems = document.querySelectorAll(".slidein");
-    let headerHeight = document.querySelector(".main-header").offsetHeight;
+    let about=document.querySelector(".about");
+    let slideItems=document.querySelectorAll(".slidein");
+    let headerHeight=document.querySelector(".main-header").offsetHeight;
 
-    let aboutTop = about.getBoundingClientRect().top;
+    let aboutTop=about.getBoundingClientRect().top;
 
-    if(aboutTop <= headerHeight){
+    if(aboutTop<=headerHeight){
         slideItems.forEach(item => {
             item.classList.add("active");
         });
@@ -46,3 +47,32 @@ function slideStripOnScroll(){
 
 window.addEventListener("scroll", slideStripOnScroll);
 slideStripOnScroll();
+
+//video auto plays once then click to reload
+window.addEventListener("load",()=>{
+    const aboutVideo=document.querySelector(".about-video");
+    const videoBox=document.querySelector(".video-box");
+    if(!aboutVideo||!videoBox)return;
+    let hasPlayedOnce=false;
+    function playVideoOnce(){
+        const boxRect=videoBox.getBoundingClientRect();
+        if(boxRect.top<window.innerHeight&&boxRect.bottom>0&&!hasPlayedOnce){
+            hasPlayedOnce=true;
+            aboutVideo.currentTime=0;
+            aboutVideo.play();
+        }
+    }
+    window.addEventListener("scroll",playVideoOnce);
+    playVideoOnce();
+    aboutVideo.addEventListener("click",()=>{
+        aboutVideo.currentTime=0;
+        aboutVideo.play();
+    });
+    aboutVideo.addEventListener("pointerdown",()=>{
+        aboutVideo.currentTime=0;
+        aboutVideo.play();
+    });
+    aboutVideo.addEventListener("ended",()=>{
+        aboutVideo.pause();
+    });
+});

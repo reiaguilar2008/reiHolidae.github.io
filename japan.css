@@ -1,0 +1,347 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#1d2440;
+}
+
+/*copy pasted the header from my*/
+/*whole header*/
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/*top part*/
+.top-header{
+    position:relative;
+    transition: all 0.4s ease;
+    background-color:#172b7d;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    padding:4px 0;
+    transition:0.4s;
+    max-height:80px;
+    overflow:hidden;
+}
+.top-header img{
+    width:35px;
+}
+.top-header a{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+}
+
+/*hide when scrolling*/
+.top-header.hide{
+    max-height:0;
+    padding-top:0;
+    padding-bottom:0;
+    opacity:0;
+    overflow:hidden;
+}
+
+/*bottom sticky part*/
+.main-header{
+    background-color:#172b7d;
+    position:relative;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:2px 35px;
+    position:relative;
+}
+/*white line*/
+.main-header::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:10%;
+    width:80%;
+    height:2px;
+    background-color:white;
+}
+.main-header img{
+    max-height:45px;
+}
+/*tryna force this damn logo to center*/
+.logo{
+    width:120px;
+    max-height:55px;
+    object-fit:contain;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-53%,-50%);/*my drawing is a bit right heavy*/
+}
+.left-icons,.right-icons{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+.right-icons span{
+    font-size:16px;
+}
+
+.menu{
+    font-size:28px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:35px 8%;
+    min-height:350px;
+    background:#dce9ff;
+}
+
+.hero-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, rgba(255,255,255,0.15), #f4f7fb);
+    z-index:1;
+}
+
+.hero-text,.trip-length{
+    position:relative;
+    z-index:2;
+}
+
+.hero-text h1{
+    font-size:60px;
+    margin-top:120px;
+    margin-left:30px;
+    color: #1d2440;
+}
+
+.trip-length{
+    display:flex;
+    width:260px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-top:25px;
+    margin-left: auto;
+    gap:0;
+}
+.nights-side,
+.days-side{
+    width:130px;
+    height:120px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.nights-side{
+    background:#172b7d;
+    color:white;
+    border-radius:20px 0 0 20px;
+
+    clip-path:polygon(
+        0 0,
+        82% 0,
+        100% 50%,
+        82% 100%,
+        0 100%
+    );
+
+    z-index:2;
+}
+
+.days-side{
+    background:white;
+    color:#172b7d;
+    border-radius:0 20px 20px 0;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        18% 50%
+    );
+
+    margin-left:-18px;
+}
+
+.trip-length img{
+    width:55px;
+    margin-bottom:10px;
+}
+
+.trip-length p{
+    font-size:22px;
+    margin:0;
+}
+
+.gallery{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:12px;
+    padding:20px;
+}
+.big-media{
+    width:70%;
+    border-radius:25px;
+    overflow:hidden;
+    transition:transform 0.4s ease;
+    cursor:pointer;
+}
+
+.big-media video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.big-media:hover{
+    transform:scale(1.03);
+}
+
+.gallery img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.booking-card,
+.quick-info,
+.overview,
+.itinerary,
+.details{
+    max-width:1000px;
+    margin:25px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.booking-card{
+    text-align:center;
+}
+
+.booking-card h2{
+    font-size:34px;
+    margin:0;
+}
+
+.booking-card button{
+    margin:18px 0;
+    padding:13px 35px;
+    border:none;
+    border-radius:25px;
+    background:#f26a3d;
+    color:white;
+    font-weight:bold;
+}
+
+.booking-icons{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    border-top:1px solid #ddd;
+    padding-top:18px;
+}
+
+.quick-info{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    text-align:center;
+}
+
+.info-box{
+    padding:18px;
+    border-radius:12px;
+    background:#eef4ff;
+    font-weight:bold;
+}
+
+.overview img{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+    border-radius:12px;
+    margin:15px 0;
+}
+
+.day-card{
+    background:#f7f9fc;
+    border-radius:12px;
+    padding:18px;
+    margin:12px 0;
+    border-left:5px solid #172b7d;
+}
+
+.details ul{
+    padding-left:22px;
+}
+
+@media(max-width:768px){
+    .hero{
+        padding:25px 20px;
+    }
+
+    .hero-text h1{
+        font-size:30px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+        padding:15px;
+    }
+
+    .gallery img{
+        height:220px;
+    }
+
+    .booking-icons,
+    .quick-info{
+        grid-template-columns:1fr 1fr;
+        flex-direction:column;
+    }
+
+    .booking-card,
+    .quick-info,
+    .overview,
+    .itinerary,
+    .details{
+        margin:18px 12px;
+        padding:18px;
+    }
+}

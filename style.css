@@ -3,6 +3,7 @@ body{
     padding:0;
     width:100%;
     font-family:Arial,sans-serif;
+    overflow-x:hidden;
 }
 
 /*whole header*/
@@ -77,7 +78,7 @@ header{
     position:absolute;
     left:50%;
     top:50%;
-    transform:translate(-52%,-50%);/*my drawing is a bit right heavy*/
+    transform:translate(-53%,-50%);/*my drawing is a bit right heavy*/
 }
 .left-icons,.right-icons{
     display:flex;
@@ -154,7 +155,7 @@ button{
     }
 }
 /*fix phone*/
-@media(max-width: 768px){
+@media(max-width:768px){
   .top-header{
     gap:12px;
     padding:5px 0;
@@ -198,6 +199,10 @@ button{
 html{
     margin:0;
     padding:0;
+    /*surgical copy paste*/
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
 }
 /*didnt work im gonna cry*/ /*white line is gone now, idk if it was this but im not touching it*/
 /*checked on the iphone se ver, still doesn't reach the edge, damn it*/
@@ -222,6 +227,7 @@ html{
 .about-logoblue{
     width:260px;
     margin-top:15px;
+    align-items:-53%,-50%;
 }
 
 /*strip(strip or stripe?) and video*/
@@ -300,14 +306,40 @@ might replace later*/
 }
 
 /*about animation*/
+/*the plane button*/
 .about-animation{
-    background-color:white;
-    min-height:330px;
+    height:330px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:48px;
-    color:#101541;
+    position:relative;
+}
+.plane-boop{
+    width:120px;
+    cursor:pointer;
+    transition:transform 2.4s ease,opacity 2.4s ease;
+    z-index:5;
+}
+.plane-boop.plane-hover:not(.fly){
+    transition:transform 0.3s ease;
+    transform:scale(1.1);
+}
+.plane-boop.fly{
+    transform:translateX(1200px);
+    opacity:0;
+    scale:1;
+}
+/*the cartoon map*/
+.map{
+    width:500px;
+    opacity:0;
+    transform:translateY(80px);
+    transition:opacity 0.8s ease,transform 0.8s ease;
+    position:absolute;
+}
+.map.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /*about bottom/last part*/
@@ -335,11 +367,22 @@ might replace later*/
     gap:20px;
     align-items:center;
     position:relative;
-    height:315px;
+    height:320px;
     margin-top:60px;
   }
   .about-main p{
     text-align:center;
+  }
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .map{
+    width:350px
+  }
+  .about-animation{
+    overflow:hidden;
   }
 
   /*video box, to small to be on the side so i made it look half on top instead*/
@@ -409,10 +452,6 @@ might replace later*/
     opacity:1;
     transform:translate(0);
 }
-/*hide this for a bit*/
-.about-animation,.about-bottom-words{
-    opacity:0;
-}
 
 /*video and strip text slide in*/
 .slidein{
@@ -447,6 +486,7 @@ might replace later*/
     user-select:none;
     -webkit-user-select:none;
     -ms-user-select:none;
+    /*came back here copy paste this into body so user cant blue anything*/
 }
 /*THE EARTH*/
 #THEWORLD{
@@ -530,10 +570,12 @@ might replace later*/
 
 /*popular packages section*/
 .popular-packages{
-    background-color:rgb(243, 243, 243);
+    background-color:rgb(250, 250, 250);
     text-align:center;
     padding:80px 0;
-    color:#101541
+    color:#101541;
+    margin-bottom:0;
+    padding-bottom:0;
 }
 .popular-packages h2{
     font-size:55px;
@@ -550,31 +592,168 @@ might replace later*/
 /*layout*/
 .packages-layout{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:350px 350px 350px;
+    justify-content:center;
+    gap:35px;
+    padding:35px;
     margin-top:20px;
 }
 /*the actual popular packages*/
 .package-card{
-    border-right:2px solid black;
-    border-bottom:2px solid black;
-    border-top:2px solid black;
+    border-radius:5%;
     height:450px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    background-color:white;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.package-card:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 .package-card h3{
-    font-size:26px;
+    font-size:24px;
     margin:10px 0;
-}
-.package-card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    display:block;
+    color:#101541;
 }
 .package-card details{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color:white;
     padding:15px;
+    box-sizing:border-box;
+    z-index:5;
+    transition:0.3s ease;
+    min-height:70px;
     text-align:left;
-    font-size:18px;
+}
+.package-card details[open]{
+    height:403px;
+    bottom:0;
+    display:block;
+    transform:translateY(0) !important;
 }
 .package-card summary{
     cursor:pointer;
+}
+.package-video{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+    border-bottom:1px solid black;
+}
+
+/*footer*/
+.site-footer{
+    background:#172b7d;
+    height:520px;
+    position:relative;
+    overflow:hidden;
+    color:white;
+    margin-bottom:0;
+}
+
+
+.footer-content{
+    position:relative;
+    width:100%;
+    height:100%;
+    z-index:2;
+}
+
+
+.footer-brand{
+    position:absolute;
+    top:40px;
+    left:90px;
+
+    text-align:left;
+}
+
+.footer-small{
+    font-size:20px;
+    margin:0 0 18px;
+    font-weight:400;
+}
+
+.footer-brand h2{
+    font-size:50px;
+    line-height:1;
+    font-weight:400;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin:0;
+
+    max-width:650px;
+}
+
+
+.footer-credits{
+    position:absolute;
+    top:40px;
+    right:30px;
+    text-align:left;
+    width:520px;
+}
+
+.credits-title{
+    font-size:18px;
+    position: relative;
+    left: 50%;
+    margin:0 0 30px;
+  
+}
+
+.credits-columns{
+    display:flex;
+    gap:35px;
+    align-items:flex-start;
+}
+
+.credit-types{
+    width:190px;
+    position: relative;
+    left: 8%;
+}
+
+.credit-types p,
+.credit-names p{
+    font-size:12px;
+    position: relative;
+    left: 65%;
+    margin:0 0 18px;
+}
+
+.footer-art{
+    position:absolute;
+
+    left:35%;
+    bottom:50px;
+
+    transform:translateX(-50%);
+   
+    width:58%;
+    max-width:1200px;
+    
+    opacity:0.9;
+    overflow: hidden;
+    z-index:1;
+  
+}
+/*I FORGOT TO PUT A BUTTON*/
+.package-button{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 24px;
+    background:#578ae8;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    justify-content:left;
 }

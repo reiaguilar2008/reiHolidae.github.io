@@ -9,10 +9,11 @@ let phonedot=0;
 const container=document.getElementById("THEWORLD");
 const countryCard=document.getElementById("countryCard");
 
-//Japan country card stuff
+//country card stuff
 const raycaster=new THREE.Raycaster();
 const mouse=new THREE.Vector2();
-let JapanDot;
+let CountryDots=[];
+let activeDot=null;
 
 const scene=new THREE.Scene();
 console.log("THEWORLD.js is working");
@@ -118,23 +119,30 @@ loader.load(
         earth=gltf.scene;
         earth.scale.set(1.4, 1.4, 1.4);
         scene.add(earth);
-        //white button
+        //white country dots
         const dotGeometry=new THREE.SphereGeometry(0.02,16,16);
-        const dotMaterial=new THREE.MeshBasicMaterial({
-            color:0xffffff,
-            transparent:true,
-            opacity:0
-        });
+        function makeCountryDot(name,x,y,z){
+            const dotMaterial=new THREE.MeshBasicMaterial({
+                color:0xffffff,transparent:true,opacity:0});
+            const dot=new THREE.Mesh(dotGeometry,dotMaterial);
+            dot.position.set(x,y,z);
+            dot.userData.countryName=name;
+            earth.add(dot);
+            CountryDots.push(dot);
+            return dot;
+}
+//Japan mini nuke
+makeCountryDot("Japan",-0.62,0.6,-0.53);
+//uk dot
+//WHERE THE FUCK IS THE UK
+makeCountryDot("UK",0.58,0.8,0.02);
+//z isnt in and ot and left isnt left
 
-        //japan dot
-        JapanDot=new THREE.Mesh(dotGeometry,dotMaterial);
-        JapanDot.position.set(-0.62,0.6,-0.53);
-        earth.add(JapanDot);
-    },
-    undefined,
-    function(error){
-        console.error("Error loading model:", error);
-    }
+},
+undefined,
+function(error){
+    console.error("Error loading model:",error);
+}
 );
 
 const controls=new OrbitControls(camera,renderer.domElement);
@@ -144,42 +152,45 @@ controls.enablePan=false;
 
 //tryna make the dots invisible until the mouse is near it
 function updateDotVisibility(){
-    if(!JapanDot)return;
-    const dotWorldPosition=new THREE.Vector3;
-    JapanDot.getWorldPosition(dotWorldPosition);
-    let globeAngle=earth.rotation.y%(Math.PI*2);
-    if(globeAngle<0){
-        globeAngle+=Math.PI*2
-    }
-    const JapanVisible=globeAngle>1.2&&globeAngle<3.2;
-    dotWorldPosition.project(camera);
-    const rect=container.getBoundingClientRect();
-    const dotX=(dotWorldPosition.x*0.5+0.5)*rect.width;
-    const dotY=(-dotWorldPosition.y*0.5+0.5)*rect.height;
-    const mouseX=mouse.x*0.5*rect.width+rect.width/2;
-    const mouseY=-mouse.y*0.5*rect.height+rect.height/2;
-    const dx=dotX-mouseX;
-    const dy=dotY-mouseY;
-    const distance=Math.sqrt(dx*dx+dy*dy);
-    closeness=1-distance/100;
-    closeness=Math.max(0,Math.min(1,closeness));
-    if(phonedot>0){
-        closeness=JapanVisible?1:0;
-    }
-    if(clicked>0){
-        JapanDot.material.opacity=0.3;
-    }else if(cardOpen){
-        JapanDot.material.opacity=1;
-    }else{
-        JapanDot.material.opacity=closeness
-    }
-    if(cardOpen){
-        JapanDot.scale.set(1,1,1);
-    }else{
-        const dotScale=0.4+closeness*0.6;
-        const clickbig=closeness>0.8?1.2:1;
-        JapanDot.scale.set(dotScale*clickbig,dotScale*clickbig,dotScale*clickbig);
-    }
+    closeness=0;
+    CountryDots.forEach(dot=>{
+        const dotWorldPosition=new THREE.Vector3();
+        dot.getWorldPosition(dotWorldPosition);
+        dotWorldPosition.project(camera);
+        const rect=container.getBoundingClientRect();
+        const dotX=(dotWorldPosition.x*0.5+0.5)*rect.width;
+        const dotY=(-dotWorldPosition.y*0.5+0.5)*rect.height;
+        const mouseX=mouse.x*0.5*rect.width+rect.width/2;
+        const mouseY=-mouse.y*0.5*rect.height+rect.height/2;
+        const dx=dotX-mouseX;
+        const dy=dotY-mouseY;
+        const distance=Math.sqrt(dx*dx+dy*dy);
+        let dotcloseness=1-distance/100;
+        dotcloseness=Math.max(0,Math.min(1,dotcloseness));
+        closeness=Math.max(closeness,dotcloseness);
+        if(phonedot>0){
+            dotcloseness=Math.max(dotcloseness,1);
+        }
+        if(clicked>0&&dot===activeDot){
+            dot.material.opacity=0.3;
+        }else if(cardOpen&&dot===activeDot){
+            dot.material.opacity=1;
+        }else{
+            dot.material.opacity=dotcloseness;
+        }
+        if(cardOpen&&dot===activeDot){
+            dot.scale.set(1,1,1);
+        }else{
+            const dotScale=0.4+dotcloseness*0.6;
+            const clickbig=dotcloseness>0.8?1.2:1;
+            dot.scale.set(
+                dotScale*clickbig,
+                dotScale*clickbig,
+                dotScale*clickbig
+            );
+        }
+
+    });
 }
 
 function animate(){
@@ -209,9 +220,9 @@ function animate(){
 }
 //card position
 function positionCountryCard(){
-    if(!JapanDot)return;
+    if(!activeDot)return;
     const dotWorldPosition=new THREE.Vector3();
-    JapanDot.getWorldPosition(dotWorldPosition);
+    activeDot.getWorldPosition(dotWorldPosition);
     dotWorldPosition.project(camera);
     const globeRect=container.getBoundingClientRect();
     const sectionRect=document.querySelector(".globe-section").getBoundingClientRect();
@@ -238,26 +249,33 @@ function positionCountryCard(){
 //japan
 //tap tap tap and click
 container.addEventListener("pointerdown",function(event){
-    if(!JapanDot)return;
     const rect=container.getBoundingClientRect();
     mouse.x=((event.clientX-rect.left)/rect.width)*2-1;
     mouse.y=-((event.clientY-rect.top)/rect.height)*2+1;
     raycaster.setFromCamera(mouse,camera);
-    const hits=raycaster.intersectObject(JapanDot, true);
+    const hits=raycaster.intersectObjects(CountryDots, true);
     if(hits.length>0){
+        activeDot=hits[0].object;
+        const countryName=activeDot.userData.countryName;
+        if(countryName==="Japan"){
+            countryCard.innerHTML=`<h2>Japan</h2><p>country info</p>`;
+        }
+        if(countryName==="UK"){
+            countryCard.innerHTML=`<h2>United Kingdom</h2><p>country info</p>`;
+        }
         clicked=20
         openCard();
     }
 })
 container.addEventListener("click",function(event){
-    if(!JapanDot)return;
     //i am deeply regretting the way i type i have no idea where i am
     const rect=container.getBoundingClientRect();
     mouse.x=((event.clientX-rect.left)/rect.width)*2-1;
     mouse.y=-((event.clientY-rect.top)/rect.height)*2+1;
     raycaster.setFromCamera(mouse,camera);
-    const hits=raycaster.intersectObject(JapanDot,true);
+    const hits=raycaster.intersectObjects(CountryDots,true);
     if(hits.length>0){
+        activeDot=hits[0].object;
         countryCard.classList.toggle("active");
         clicked=20;
         openCard();
