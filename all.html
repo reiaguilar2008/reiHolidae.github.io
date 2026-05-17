@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holidae Packages</title>
+    <link rel="stylesheet" href="all.css">
+</head>
+<body>
+
+<header>
+    <div class="top-header" id="topHeader">
+        <a href="https://instagram.com/YOURACCOUNT" target="_blank"><img src="insta.png" alt="Instagram"></a>
+        <a href="https://tiktok.com/@YOURACCOUNT" target="_blank"><img src="clock.png" alt="TikTok"></a>
+        <a href="https://twitter.com/YOURACCOUNT" target="_blank"><img src="larry.png" alt="Twitter"></a>
+        <a href="https://youtube.com/@YOURACCOUNT" target="_blank"><img src="utube.png" alt="YouTube"></a>
+        <a href="https://facebook.com/YOURACCOUNT" target="_blank"><img src="fb.png" alt="Facebook"></a>
+
+        <a href="#" id="contactButton">CONTACT</a>
+
+        <div class="acc-links">
+            <a href="signup.html" class="acc-link signup-link">Sign up</a>
+            <span class="split">/</span>
+            <a href="login.html" class="login-link">Log in</a>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="left-icons">
+            <button id="menuButton">☰</button>
+        </div>
+
+        <img src="logo.png" alt="Holidae logo" class="logo">
+
+        <div class="right-icons">
+            <div class="language-menu">
+                <button id="languageButton" type="button">English ▾</button>
+
+                <div class="language-dropdown" id="languageDropdown">
+                    <button type="button" data-lang="en">English</button>
+                    <button type="button" data-lang="ar">Arabic</button>
+                    <button type="button" data-lang="fr">French</button>
+                    <button type="button" data-lang="es">Spanish</button>
+                    <button type="button" data-lang="ja">Japanese</button>
+                </div>
+            </div>
+
+            <div id="google_translate_element"></div>
+            <button><img src="search.png" alt="Search"></button>
+        </div>
+    </div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="side-menu" id="sideMenu">
+    <div class="menu-auth">
+        <a href="login.html">Log in</a>
+        <span>/</span>
+        <a href="signup.html">Sign up</a>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#globe">Globe</a>
+    <a href="index.html#popular-packages">Popular Packages</a>
+    <a href="all.html">View All Packages</a>
+</nav>
+<main class="packages-page">
+
+    <section class="packages-hero">
+        <h1>All Packages</h1>
+        <p>Browse your next holiday like your favourite streaming playlist.</p>
+    </section>
+
+    <section class="package-row">
+        <h2>Asia</h2>
+
+        <div class="package-slider">
+            <a href="japan-package.html" class="stream-card">
+                <video src="japan-video.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>Japan City Circuit</h3>
+                    <p>7 Days • 6 Nights</p>
+                </div>
+            </a>
+
+            
+        </div>
+    </section>
+
+    <section class="package-row">
+        <h2>Europe</h2>
+
+        <div class="package-slider">
+            <a href="eu.html" class="stream-card">
+                <video src="europe-tour.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>EU Tour</h3>
+                    <p>Multi-country adventure</p>
+                </div>
+            </a>
+
+            <a href="uk.html" class="stream-card">
+                <video src="uk.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>UK Exploration</h3>
+                    <p>Classic city escape</p>
+                </div>
+            </a>
+
+            <a href="chris.html" class="stream-card">
+                <video src="christmas.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>European Winter</h3>
+                    <p>Snowy holiday trip 7 Days • 6 Nights</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="package-row">
+        <h2>Quick Trips</h2>
+
+        <div class="package-slider">
+            <a href="ny.html" class="stream-card">
+                <video src="new-york.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>New York Urban Escape</h3>
+                    <p>Fast-paced city break</p>
+                </div>
+            </a>
+            <a href="beach.html" class="stream-card">
+                <video src="hawaii.mp4" muted loop playsinline></video>
+                <div class="stream-info">
+                    <h3>Tropical Getaway</h3>
+                    <p>Beach Escape 3 Days • 2 Nights</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<button class="theme-toggle" id="themeToggle" type="button">
+    <img src="sund.png" alt="Theme toggle" id="themeIcon">
+</button>
+
+<div class="contact-popup" id="contactPopup">
+    <div class="contact-top">
+        <h2>Contact Us</h2>
+        <button id="closeContact">✕</button>
+    </div>
+
+    <p>Don't hesitate to contact us for support.</p>
+
+    <div class="contact-box">📞 +971 00 000 0000</div>
+    <div class="contact-box">✉️ hello@holidae.com</div>
+    <div class="contact-box">📍 Abu Dhabi, UAE</div>
+    <div class="contact-box">🌐 reiHolidae.github.io</div>
+</div>
+
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        { pageLanguage: 'en' },
+        'google_translate_element'
+    );
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="fold.js"></script>
+<script src="packages-posters.js"></script>
+
+</body>
+</html>
