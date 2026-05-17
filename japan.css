@@ -1,7 +1,11 @@
 *{
     box-sizing:border-box;
 }
-
+html{
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -210,15 +214,21 @@ button{
     margin:0 auto;
     display:grid;
     grid-template-columns:2fr 1fr;
-    gap:12px;
-    padding:20px;
+    gap:25px;
+    padding:40px 20px;
+    align-items:center;
 }
+
+/*big video*/
 .big-media{
-    width:70%;
-    border-radius:25px;
+    position:relative;
+    width:100%;
+    height:420px;
+    border-radius:15px;
     overflow:hidden;
-    transition:transform 0.4s ease;
     cursor:pointer;
+    transition:transform 0.3s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
 .big-media video{
@@ -231,14 +241,26 @@ button{
     transform:scale(1.03);
 }
 
-.gallery img{
+/*side image*/
+.side-media{
     width:100%;
-    height:320px;
-    object-fit:cover;
-    border-radius:12px;
+    height:420px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
-.booking-card,
+.side-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.side-media:hover{
+    transition:transform 0.3s ease;
+    transform:scale(1.03);
+}
+
 .quick-info,
 .overview,
 .itinerary,
@@ -249,33 +271,6 @@ button{
     padding:25px;
     border-radius:14px;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
-}
-
-.booking-card{
-    text-align:center;
-}
-
-.booking-card h2{
-    font-size:34px;
-    margin:0;
-}
-
-.booking-card button{
-    margin:18px 0;
-    padding:13px 35px;
-    border:none;
-    border-radius:25px;
-    background:#f26a3d;
-    color:white;
-    font-weight:bold;
-}
-
-.booking-icons{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    border-top:1px solid #ddd;
-    padding-top:18px;
 }
 
 .quick-info{
@@ -292,14 +287,6 @@ button{
     font-weight:bold;
 }
 
-.overview img{
-    width:100%;
-    height:330px;
-    object-fit:cover;
-    border-radius:12px;
-    margin:15px 0;
-}
-
 .day-card{
     background:#f7f9fc;
     border-radius:12px;
@@ -307,7 +294,48 @@ button{
     margin:12px 0;
     border-left:5px solid #172b7d;
 }
+.day-card summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
+.day-card summary::after{
+    content:"▾";
+    font-size:40px;
+    color:#172b7d;
+    transition:0.3s;
+    margin-left:-15px;
+    transform: scaleY(0.6);
+    display: inline-block;
+}
+
+.day-card[open] summary::after{
+    transform:rotate(180deg);
+}
+
+.day-content{
+    display:flex;
+    gap:25px;
+    align-items:flex-start;
+    margin-top:20px;
+}
+
+.day-content img{
+    width:280px;
+    height:250px;
+    border-radius:14px;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+.day-content p{
+    flex:1;
+    line-height:1.7;
+    color:#444;
+}
 .details ul{
     padding-left:22px;
 }
@@ -335,8 +363,6 @@ button{
         grid-template-columns:1fr 1fr;
         flex-direction:column;
     }
-
-    .booking-card,
     .quick-info,
     .overview,
     .itinerary,
@@ -344,4 +370,384 @@ button{
         margin:18px 12px;
         padding:18px;
     }
+    .side-media{
+        height:auto;
+    }
+}
+/*copy pasted from og css*/
+@media(max-width:768px){
+  .top-header{
+    gap:12px;
+    padding:5px 0;
+  }
+  .top-header img{
+    width:22px;
+  }
+  .top-header a{
+    font-size:14px;
+  }
+  .main-header{
+    padding:6px 12px;
+  }
+  .logo{
+    width:80px;
+  }
+  button img{
+    width:28px;
+  }
+  button{
+    font-size:26px;
+  }
+  .right-icons span{
+    font-size:14px;
+  }
+  .left-icons,.right-icons{
+    gap:8px;
+  }
+}
+
+@media(max-width:768px){
+    .day-content{
+        display:block;
+    }
+
+    .day-content img{
+        width:100%;
+        max-width:100%;
+        margin:15px 0;
+    }
+
+    .day-content p{
+        width:100%;
+        margin-top:15px;
+    }
+}
+
+/*book now button*/
+.book-now{
+    display:block;
+    width:fit-content;
+    margin:40px auto 0;
+    padding:16px 42px;
+
+    background:#172b7d;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+
+    border-radius:40px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:0.3s ease;
+}
+
+.book-now:hover{
+    transform:translateY(-3px);
+    background:#172b7d;
+}
+
+/*copy paste again im getting lazy*/
+/*all the stuff for dark mode*/
+.theme-toggle{
+    position:fixed;
+    left:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    background:none;
+    border:none;
+    box-shadow:none;
+    z-index:5000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.theme-toggle img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    opacity:0.75;
+}
+
+/*dark mode for this page's specific stuff*/
+/* DARK MODE */
+body.dark-mode{
+    background:#101426;
+    color:white;
+}
+
+/* sections */
+body.dark-mode .quick-info,
+body.dark-mode .overview,
+body.dark-mode .itinerary,
+body.dark-mode .details,
+body.dark-mode .day-card{
+    background:#1b2138;
+    color:white;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* hero stays normal */
+body.dark-mode .hero{
+    background:#dce9ff;
+}
+
+/* overlay */
+body.dark-mode .hero::after{
+    background:linear-gradient(
+        to bottom,
+        rgba(16,20,38,0.1),
+        #101426
+    );
+}
+
+/* text */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode summary{
+    color:white;
+}
+
+body.dark-mode .day-content p{
+    color:#d9e2ff;
+}
+
+/* info boxes */
+body.dark-mode .info-box{
+    background:#202844;
+    color:white;
+}
+
+body.dark-mode .days-side{
+    background:white;
+    color:#172b7d;
+}
+
+body.dark-mode .days-side p{
+    color:#172b7d;
+}
+
+/* arrow */
+body.dark-mode .day-card summary::after{
+    color:#9bb3ff;
+}
+
+/* book button */
+body.dark-mode .book-now{
+    background:#07008f;
+    color:white;
+}
+
+body.dark-mode .book-now:hover{
+    background:#1d15c2;
+}
+
+/* gallery shadows darker */
+body.dark-mode .big-media,
+body.dark-mode .side-media{
+    box-shadow:0 10px 25px rgba(0,0,0,0.45);
+}
+
+/*again copy paste*/
+/*contact pop up card*/
+.contact-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0.9);
+
+    width:350px;
+    background:#101541;
+    color:white;
+
+    padding:30px;
+
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.8);
+
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+
+    z-index:9999;
+}
+
+.contact-popup.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.contact-box{
+    border:1px solid rgba(255,255,255,0.8);
+    padding:15px;
+    margin-top:15px;
+}
+
+/*copy pasting the language stuff*/
+/*language stuff in the header*/
+.language-menu{
+    position:relative;
+}
+
+#languageButton{
+    font-size:16px;
+}
+
+.language-dropdown{
+    position:absolute;
+    top:38px;
+    right:0;
+
+    background:#172b7d;
+    border:1px solid rgba(255,255,255,0.3);
+
+    overflow:hidden;
+
+    display:none;
+    min-width:140px;
+
+    z-index:9999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.language-dropdown.active{
+    display:block;
+}
+
+.language-dropdown button{
+    width:100%;
+    padding:12px 16px;
+
+    text-align:left;
+    font-size:15px;
+
+    color:white;
+}
+
+.language-dropdown button:hover{
+    background:#172b7d;
+}
+
+/*hide ugly google thing*/
+#google_translate_element{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+body > .skiptranslate{
+    display:none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate{
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+}
+
+html,
+body{
+    top:0 !important;
+    margin-top:0 !important;
+}
+
+/*copy pasteee*/
+.acc-links{
+    position:absolute;
+    right:58px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+}
+.login-link,.signup-link{
+    color:white;
+    font-size:16px !important;
+    padding:5px 12px;
+    border-radius:15px;
+    transition:0.3s ease;
+    white-space:nowrap;
+}
+.login-link:hover,.signup-link:hover{
+    background:white;
+    color:#172b7d;
+}
+.split{
+    color:white;
+    font-size:15px;
+}
+
+/*menu copy paste*/
+/*menu stuff*/
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-320px;
+    width:260px;
+    height:100vh;
+    background:#172b7d;
+    z-index:6000;
+    padding:35px 25px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    transition:0.35s ease;
+    box-shadow:8px 0 25px rgba(0,0,0,0.35);
+    overflow:hidden;
+    visibility:visible;
+}
+
+.side-menu.active{
+    left:0;
+    visibility:visible;
+}
+
+.side-menu a,
+.menu-auth span{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.side-menu a:hover{
+    background:white;
+    color:#172b7d;
+    padding-left:10px;
+    border-radius:10px;
+}
+
+.menu-auth{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.menu-auth a,
+.menu-auth span{
+    font-size:16px;
+}
+
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    z-index:5000;
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.menu-overlay.active{
+    opacity:1;
+    pointer-events:auto;
 }

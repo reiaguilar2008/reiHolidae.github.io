@@ -746,7 +746,7 @@ might replace later*/
   
 }
 /*I FORGOT TO PUT A BUTTON*/
-.package-button{
+.japan-button{
     display:inline-block;
     margin-top:15px;
     padding:12px 24px;
@@ -756,4 +756,410 @@ might replace later*/
     border-radius:10px;
     font-weight:bold;
     justify-content:left;
+}
+
+/*phone fix for the popular oackages section forgot to do it earlier*/
+@media(max-width:768px){
+    .packages-layout{
+        display:flex;
+        overflow-x:auto;
+        gap:18px;
+        padding:20px 20px 20px 35px;
+        scroll-snap-type:x mandatory;
+        justify-content:flex-start;
+    }
+
+    .package-card{
+        min-width:280px;
+        flex:0 0 280px;
+        scroll-snap-align:start;
+    }
+
+    .packages-layout::-webkit-scrollbar{
+        display:none;
+    }
+}
+
+/*mobile version of the footer. still think its ugly :(*/
+@media(max-width:768px){
+    .site-footer{
+        height:520px;
+        overflow:hidden;
+    }
+
+    .footer-brand{
+        top:35px;
+        left:25px;
+        right:25px;
+    }
+
+    .footer-small{
+        font-size:15px;
+        margin-bottom:10px;
+    }
+
+    .footer-brand h2{
+        font-size:34px;
+        max-width:320px;
+        line-height:1.05;
+    }
+
+    .footer-credits{
+        top:155px;
+        left:25px;
+        right:25px;
+        width:auto;
+    }
+
+    .credits-title{
+        font-size:15px;
+        left:0;
+        margin-bottom:15px;
+    }
+
+    .credits-columns{
+        gap:25px;
+    }
+
+    .credit-types{
+        width:auto;
+        left:0;
+    }
+
+    .credit-types p,
+    .credit-names p{
+        font-size:11px;
+        left:0;
+        margin-bottom:10px;
+    }
+
+    .footer-art{
+        width:120%;
+        max-width:none;
+        left:50%;
+        bottom:0;
+        transform:translateX(-50%);
+        opacity:0.8;
+    }
+}
+
+/*all the stuff for dark mode*/
+.theme-toggle{
+    position:fixed;
+    left:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    background:none;
+    border:none;
+    box-shadow:none;
+    z-index:5000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.theme-toggle img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    opacity:0.75;
+}
+
+/* DARK MODE */
+body.dark-mode{
+    background:#101426;
+    color:white;
+}
+
+/* dark mode sections BUT NOT HERO */
+body.dark-mode section:not(.hero),
+body.dark-mode .package-card,
+body.dark-mode .booking-card,
+body.dark-mode .quick-info,
+body.dark-mode .overview,
+body.dark-mode .itinerary,
+body.dark-mode .details,
+body.dark-mode .day-card{
+    background:#1b2138;
+    color:white;
+}
+
+body.dark-mode p,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3{
+    color:white;
+}
+
+/* force hero to stay normal */
+body.dark-mode .hero{
+    background-size:cover;
+    background-position:center;
+    animation:heroSlideshow 25s infinite;
+}
+
+body.dark-mode .about{
+    background-color:#1b2138;
+    color:white;
+}
+
+body.dark-mode .about-top h2{
+    color:white;
+}
+
+body.dark-mode .about-main{
+    background-color:#07008f;
+    color:white;
+}
+
+body.dark-mode .about-blocks{
+    background-color:#1b2138;
+}
+
+body.dark-mode .info-left{
+    background-color:#070b2e;
+}
+
+body.dark-mode .info-right,
+body.dark-mode .about-bottom{
+    background-color:#07008f;
+}
+
+body.dark-mode .about-strip-text p,
+body.dark-mode .about-bottom-words{
+    color:white;
+}
+body.dark-mode #THEWORLD{
+    background:#1b2138;
+}
+
+
+body.dark-mode .popular-packages,
+body.dark-mode .packages-layout{
+    background:#202844 !important;
+}
+body.dark-mode .popular-packages{
+    background:#202844;
+    color:white;
+}
+
+body.dark-mode .popular-packages h2,
+body.dark-mode .package-card h3{
+    color:white;
+}
+
+body.dark-mode .package-card{
+    background:#1b2138;
+    box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .package-card details{
+    background:#1b2138;
+    color:white;
+}
+
+body.dark-mode .package-card summary,
+body.dark-mode .package-card p{
+    color:white;
+}
+
+body.dark-mode .package-video{
+    border-bottom:1px solid #3e4a75;
+}
+
+/*contact pop up card*/
+.contact-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0.9);
+
+    width:350px;
+    background:#101541;
+    color:white;
+
+    padding:30px;
+
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.8);
+
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+
+    z-index:9999;
+}
+.contact-popup.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:translate(-50%,-50%) scale(1);
+}
+.contact-box{
+    border:1px solid rgba(255,255,255,0.8);
+    padding:15px;
+    margin-top:15px;
+}
+
+/*language stuff in the header*/
+.language-menu{
+    position:relative;
+}
+
+#languageButton{
+    font-size:16px;
+}
+
+.language-dropdown{
+    position:absolute;
+    top:38px;
+    right:0;
+
+    background:#172b7d;
+    border:1px solid rgba(255,255,255,0.3);
+
+    overflow:hidden;
+
+    display:none;
+    min-width:140px;
+
+    z-index:9999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.language-dropdown.active{
+    display:block;
+}
+
+.language-dropdown button{
+    width:100%;
+    padding:12px 16px;
+
+    text-align:left;
+    font-size:15px;
+
+    color:white;
+}
+
+.language-dropdown button:hover{
+    background:#172b7d;
+}
+
+/*hide ugly google thing*/
+#google_translate_element{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+body > .skiptranslate{
+    display:none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate{
+    display:none !important;
+    visibility:hidden !important;
+    height:0 !important;
+}
+
+html,
+body{
+    top:0 !important;
+    margin-top:0 !important;
+}
+
+/*I FORGOT TO MAKE A LOG IN BUTTON*/
+.acc-links{
+    position:absolute;
+    right:58px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+}
+
+.login-link,.signup-link{
+    color:white;
+    font-size:16px !important;
+    padding:5px 12px;
+    border-radius:15px;
+    transition:0.3s ease;
+    white-space:nowrap;
+}
+.login-link:hover,.signup-link:hover{
+    background:white;
+    color:#172b7d;
+}
+.split{
+    color:white;
+    font-size:15px;
+}
+
+/*menu stuff*/
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-320px;
+    width:260px;
+    height:100vh;
+    background:#172b7d;
+    z-index:6000;
+    padding:35px 25px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    transition:0.35s ease;
+    box-shadow:8px 0 25px rgba(0,0,0,0.35);
+    overflow:hidden;
+    visibility:visible;
+}
+
+.side-menu.active{
+    left:0;
+    visibility:visible;
+}
+
+.side-menu a,
+.menu-auth span{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.side-menu a:hover{
+    background:white;
+    color:#172b7d;
+    padding-left:10px;
+    border-radius:10px;
+}
+
+.menu-auth{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.menu-auth a,
+.menu-auth span{
+    font-size:16px;
+}
+
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    z-index:5000;
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.menu-overlay.active{
+    opacity:1;
+    pointer-events:auto;
 }
